@@ -3,8 +3,10 @@ import React, { useState, useEffect, useRef } from "react";
 function TodoForm(props) {
   const [input, setInput] = useState(props.edit ? props.edit.value : "");
 
+  //This sets state to the referenced input we are focused on
   const inputRef = useRef(null);
 
+  // This focuses on input
   useEffect(() => {
     inputRef.current.focus();
   });
@@ -17,6 +19,7 @@ function TodoForm(props) {
     e.preventDefault();
 
     props.onSubmit({
+      //can also use uuid
       id: Math.floor(Math.random() * 10000),
       text: input,
     });
